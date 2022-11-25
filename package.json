@@ -1,0 +1,31 @@
+{
+  "name": "build-appi-for-console",
+  "version": "1.0.0",
+  "description": "This is a console application for config work enviroment ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MiguelMunoz09"
+  },
+  "keywords": [
+    "javascript",
+    "nodejs",
+    "npm",
+    "packages"
+  ],
+  "author": "Miguel Angel Jaramillo Munoz <thewintherdmc@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "^8.2.5"
+  },
+  "homepage": "https://github.com/MiguelMunoz09/Wes-help-desk.git",
+  "bin": {
+    "Build-appi-for-console": "./bin/global.js"
+  },
+  "preferGlobal": true
+}
+
