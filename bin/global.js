@@ -1,3 +1,3 @@
-let messages = require('../src/script.js');
+let scripts = require('../src/script.js');
 
-messages ()
+scripts ()
