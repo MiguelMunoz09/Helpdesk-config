@@ -1,3 +1,3 @@
-let scripts = require('../src/script.js');
+let scripts = require('../src/indexs.js');
 
 scripts ()

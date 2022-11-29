@@ -1,5 +1,10 @@
+const { write } = require('fs');
 const inquirer = require('inquirer');
 require('colors');
+
+var readline = require ('readline');
+
+var rl = readline.createInterface(process.stdin, process.stdout);
 
 function scripts () {
 
@@ -7,7 +12,7 @@ inquirer
 .prompt([
   {
     type: "rawlist",
-    name: "options",
+    name: "questionsform",
     message: "what would you like to do? ",
     loop : true,
     choices: [
@@ -38,41 +43,167 @@ inquirer
   }
 ])
 
-.then(() => {
-  if (options = 1){
-  console.log("test") 
-    comeback();
- }
-  
-})
+
+
+.then(({questionsform}, ) => {
+console.log (`se esta ejecutando la funcion  ${questionsform} ...`) 
+  function show () {
+    if (questionsform == 1) {
+    console.log ("en proceso..")
+      goback();
+
+    
+  } else if (questionsform == 2){
+    console.log ("este es el proceso 2")
+
+    goback ();
+
+  } else if (questionsform == 3) {
+    console.log ("consola numero 3")
+
+    goback ();
+
+  } else if (questionsform == 4 ) {
+    console.log ("consola numero 4")
+
+    goback ();
+
+  } else if (questionsform == 5) {
+    console.log("ten ")
+    process.exit();
   
 
-.catch((error) => {
-  if (error.isTtyError) {
-    console.log(error)
   } else {
-    /* console */
+    console.log("sintaxis equivocada")
+  }
+  }
+  show ();
+ 
+})
+
+ 
+
+.catch((error) => {
+ if (error.isTtyError) {
+
+   console.log(error)
+ } else {
+   /* console */
   }
 
 }); 
 
+
+
 }
+
+
 
 scripts ()
 
-//para volver atras
+//para volver a el formulario.
 
-function comeback () {
+function goback () {
   inquirer
-.prompt([ {
-  type: "input",
-    name: "entry",
-    message: "press 9 for comeback:  ",
-}])
-   .then ((entry) => {
-    console.log (entry)
-   })
-} 
+.prompt([
+  {
+    type: "input",
+    name: "press9",
+    message: "press 9 for go back ",
+    loop : true,
+    
+  }
+])
+
+.then(({press9}, ) => {
+  
+    function show2 () {
+      if (press9 == 9) {
+      scripts();
+        
+    } else {
+      console.log("sintaxis equivocada, digita bien el numero")
+      goback();
+    }
+    }
+    show2 ();
+   
+  })
+  
+}
+
+// para salir de la consola
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//para volver atras
+/*
+
+var result;
+
+
+function allthishit () {
+    process.stdout.write ("selecciona el 9 para volver: ")
+
+      process.stdin.on('data', function(data){
+       result = data.toString()
+        if (result == 9 ) {
+            console.log ("se logro")
+        } else {
+            console.log ("no se logro")
+            process.exit();
+        }
+})
+
+}
+
+  */
+
+
+ 
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
 
 
 
