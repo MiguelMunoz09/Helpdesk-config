@@ -20,12 +20,15 @@
   "author": "Miguel Angel Jaramillo Munoz <thewintherdmc@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "babel-preset-latest": "^6.24.1",
     "colors": "^1.4.0",
     "inquirer": "^8.2.5"
+    
   },
   "homepage": "https://github.com/MiguelMunoz09/Wes-help-desk.git",
   "bin": {
     "Build-appi-for-console": "./bin/global.js"
   },
-  "preferGlobal": true
+  "preferGlobal": true,
+  "type": "module"
 }

@@ -1,3 +1,5 @@
-let scripts = require('../src/indexs.js');
+#!/usr/bin/env node
+
+import scripts from '../src/index.js';
 
 scripts ()
