@@ -1,3 +1,24 @@
+
+
+
+path.basename('xcode-select --install.');
+console.log(basename)
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+para pedir datos al usuario.
+
 var result;
 
 
@@ -18,9 +39,7 @@ function allthishit () {
 
    allthishit();
 
-
-
-
+*/
 
 
 

@@ -6,6 +6,8 @@ var readline = require ('readline');
 
 var rl = readline.createInterface(process.stdin, process.stdout);
 
+//Formulario
+
 function scripts () {
 
 inquirer
@@ -43,10 +45,10 @@ inquirer
   }
 ])
 
-
+//condicionales del formulario
 
 .then(({questionsform}, ) => {
-console.log (`se esta ejecutando la funcion  ${questionsform} ...`) 
+console.log (`Function  ${questionsform} is being executed ...`) 
   function show () {
     if (questionsform == 1) {
     console.log ("en proceso..")
@@ -69,9 +71,12 @@ console.log (`se esta ejecutando la funcion  ${questionsform} ...`)
     goback ();
 
   } else if (questionsform == 5) {
-    console.log("ten ")
+    setTimeout (function (){
+    console.log("Coming out of the console... ")
     process.exit();
   
+    }, 1000)
+    
 
   } else {
     console.log("sintaxis equivocada")
@@ -81,7 +86,7 @@ console.log (`se esta ejecutando la funcion  ${questionsform} ...`)
  
 })
 
- 
+//.catch para evitar que el programa se rompa gravemente
 
 .catch((error) => {
  if (error.isTtyError) {
@@ -101,7 +106,9 @@ console.log (`se esta ejecutando la funcion  ${questionsform} ...`)
 
 scripts ()
 
+
 //para volver a el formulario.
+
 
 function goback () {
   inquirer
@@ -132,87 +139,3 @@ function goback () {
   
 }
 
-// para salir de la consola
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//para volver atras
-/*
-
-var result;
-
-
-function allthishit () {
-    process.stdout.write ("selecciona el 9 para volver: ")
-
-      process.stdin.on('data', function(data){
-       result = data.toString()
-        if (result == 9 ) {
-            console.log ("se logro")
-        } else {
-            console.log ("no se logro")
-            process.exit();
-        }
-})
-
-}
-
-  */
-
-
- 
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-  
-   
-
-
-
-
-         
