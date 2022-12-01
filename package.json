@@ -1,5 +1,5 @@
 {
-  "name": "build-appi-for-console",
+  "name": "helpdesk-config",
   "version": "1.0.0",
   "description": "This is a console application for config work enviroment ",
   "main": "index.js",
@@ -17,7 +17,7 @@
     "npm",
     "packages"
   ],
-  "author": "Miguel Angel Jaramillo Munoz <thewintherdmc@gmail.com>",
+  "author": "Miguel Angel Jaramillo Munoz <miguel.jaramillo@parrolabs.com>",
   "license": "MIT",
   "dependencies": {
     "babel-preset-latest": "^6.24.1",
@@ -25,9 +25,9 @@
     "inquirer": "^8.2.5"
     
   },
-  "homepage": "https://github.com/MiguelMunoz09/Wes-help-desk.git",
+  "homepage": "https://github.com/MiguelMunoz09/Helpdesk-config",
   "bin": {
-    "Build-appi-for-console": "./bin/global.js"
+    "Helpdesk-config": "./bin/global.js"
   },
   "preferGlobal": true,
   "type": "module"

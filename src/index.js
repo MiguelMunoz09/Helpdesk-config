@@ -1,320 +1,353 @@
 import inquirer from 'inquirer';
 import { exec } from 'child_process';
-import internal from 'stream';
+//functions for downloads the apps
 
-//Formulario
+//xcode and homebrew
 
-function scripts () {
-
-inquirer
-.prompt([
-  {
-    type: "rawlist",
-    name: "questionsform",
-    message: "what would you like to do? ",
-    loop : true,
-    choices: [
-      
-      {
-        value: "1",
-        name: `Install X-Code and Homebrew (required for App install)`,
-      },
-      {
-        value: "2",
-        name: `Install General Apps (Google Chrome, Firefox, Clockify, Clickup, Slack) `,
-      },
-      {
-        value: "3",
-        name: `Install General Developer Apps`,
-      },
-      {
-        value: "4",
-        name: `Install Designer Apps`,
-      },
-      {
-        value: "5",
-        name: `Close window`,
-        
-      }
-
-    ]
-  }
-])
-
-//condicionales del formulario
-
-.then(({questionsform}, ) => {
-console.log (`Function  ${questionsform} is being executed ...`) 
-  function show () {
-    if (questionsform == 1) {
-      xcode_homebrew();
-
-  } else if (questionsform == 2){
-    generalapps();
-
-  } else if (questionsform == 3) {
-    developerapps();
-
-  } else if (questionsform == 4 ) {
-    designapps();
-
-  } else if (questionsform == 5) {
-    setTimeout (function (){
-    console.log("Coming out of the console... ")
-    process.exit();
-  
-    }, 1000)
-    
-
-  } else {
-    console.log("sintaxis equivocada")
-  }
-  }
-  show ();
- 
-})
-
-//.catch para evitar que el programa se rompa gravemente
-
-.catch((error) => {
- if (error.isTtyError) {
-
-   console.log(error)
- } else {
-   /* console */
-  }
-
-}); 
-
-
-
-}
-
-
-
-scripts ()
-
-
-//para volver a el formulario.
-
-
-function goback () {
-  inquirer
-.prompt([
-  {
-    type: "input",
-    name: "press9",
-    message: "press 9 for go back ",
-    loop : true,
-    
-  }
-])
-
-.then(({press9}, ) => {
-  
-    function show2 () {
-      if (press9 == 9) {
-      scripts();
-        
-    } else {
-      console.log("sintaxis equivocada, digita bien el numero")
-      goback();
-    }
-    }
-    show2 ();
-   
-  })
-  
-}
-
-
-//funciones para descargar las aplicaciones
-
-
-
-/**
- * Execute simple shell command (async wrapper).
- * @param {String} cmd
- * @return {Object} { stdout: String, stderr: String }
- */
-
-
-async function sh(cmd) {
-  return new Promise(function (resolve, reject) {
-    exec(cmd, (err, stdout, stderr) => {
-      if (err) {
-        reject(err)
+function xcode () {
+  console.log("Installing Xcode...")
+  exec('xcode-select -p || xcode-select --install',
+  function (error, stderr) {
+      console.log('stderr: ' + stderr);
+      if (error !== null) {
+          console.log('Code error: ' + error);
+         console.log ("xcode cannot be installed on your computer, because it is already installed.")
       } else {
-        resolve({ stdout, stderr });
+          console.log("Xcode is Installed")
       }
-    });
   });
 }
 
-//funcion main que descarga las aplicaciones que necesitamos.
+function homebrew () {
+  console.log ("Installing Homebrew...")
+  exec(' /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"',
+  function (error, stderr) {
+      console.log('stderr: ' + stderr);
+      if (error !== null) {
+          console.log('Code error: ' + error);
+         console.log ("Homebrew cannot be installed on your computer, because it is already installed.")
+      } else {
+          console.log("Homebrew is Installed")
+      }
+  });
+}
 
-async function xcode() {
-  let { stdout } = await sh('xcode-select --install');
-  for (let line of stdout.split('\n')) {
-    console.log(`xcode-select --install: ${line}`);
-  }
+
+//general apps
+
+function googlechrome () {
+  console.log ("installing google chrome...")
+  exec(' brew list google-chrome || brew install --cask google-chrome',
+  function (error, stderr) {
+      console.log('stderr: ' + stderr);
+      if (error !== null) {
+          console.log('Code error: ' + error);
+         console.log ("google chrome cannot be installed on your computer, because it is already installed.")
+      } else {
+          console.log("google chrome is installed")
+      }
+  });
+}
+
+function firefox () {
+  console.log("installing firefox...")
+  exec(' brew list firefox || brew install --cask firefox',
+  function (error, stderr) {
+      console.log('stderr: ' + stderr);
+      if (error !== null) {
+          console.log('Code error: ' + error);
+         console.log ("Firefox cannot be installed on your computer, because it is already installed.")
+      } else {
+          console.log ("Firefox is installed")
+      }
+  });
+}
+
+function clickup () {
+  console.log ("installing Clickup...")
+  exec('brew list clickup || brew install --cask clickup',
+  function (error, stderr) {
+      console.log('stderr: ' + stderr);
+      if (error !== null) {
+          console.log('Code error: ' + error);
+         console.log ("Clickup cannot be installed on your computer, because it is already installed.")
+      } else {
+          console.log("Clickup is Installed")
+      }
+  });
+}
+
+function clockify () {
+  console.log ("Installing Clockify...")
+  exec('brew list clockify || brew install --cask clockify',
+  function (error, stderr) {
+      console.log('stderr: ' + stderr);
+      if (error !== null) {
+          console.log('Code error: ' + error);
+         console.log ("Clockify cannot be installed on your computer, because it is already installed.")
+      } else {
+          console.log ("Clockify is Installed")
+      }
+  });
+}
+
+function slack () {
+  console.log("Installing Slack...")
+  exec('brew list slack || brew install --cask slack',
+  function (error, stderr) {
+      console.log('stderr: ' + stderr);
+      if (error !== null) {
+          console.log('Code error: ' + error);
+         console.log ("Slack cannot be installed on your computer, because it is already installed.")
+      } else {
+          console.log("Slack is Installed")
+      }
+  });
+}
+
+//developertools
+
+function github () {
+  console.log ("Installing Github Command Line Tools...")
+  exec('brew list gh || brew install --cask github',
+  function (error, stderr) {
+      console.log('stderr: ' + stderr);
+      if (error !== null) {
+          console.log('Code error: ' + error);
+         console.log ("Github cannot be installed on your computer, because it is already installed.")
+      } else {
+          console.log("Github is Installed")
+      }
+  });
+}
+
+function visualcode () {
+  console.log("Installing Visual Studio Code... ")
+  exec(' brew list visual-studio-code || brew install --cask visual-studio-code',
+  function (error, stderr) {
+      console.log('stderr: ' + stderr);
+      if (error !== null) {
+          console.log('Code error: ' + error);
+         console.log ("Visual studio code cannot be installed on your computer, because it is already installed.")
+      } else {
+          console.log("Visual Studio Code is installed")
+      }
+  });
+}
+
+function postman () {
+  exec(' brew list postman || brew install --cask postman',
+  function (error, stderr) {
+      console.log('stderr: ' + stderr);
+      if (error !== null) {
+          console.log('Code error: ' + error);
+         console.log ("Postman cannot be installed on your computer, because it is already installed.")
+      } 
+  });
+}
+
+function docker () {
+  console.log ("Installing Docker...")
+  exec('  brew list docker || brew install --cask docker',
+  function (error, stderr) {
+      console.log('stderr: ' + stderr);
+      if (error !== null) {
+          console.log('Code error: ' + error);
+         console.log ("Docker cannot be installed on your computer, because it is already installed.")
+      } else {
+          console.log("Docker is Installed")
+      }
+  });
+}
+
+function zshell () {
+  console.log ("Installing zshell...")
+  exec(' brew install zsh',
+  function (error, stderr) {
+      console.log('stderr: ' + stderr);
+      if (error !== null) {
+          console.log('Code error: ' + error);
+         console.log ("zshell cannot be installed on your computer, because it is already installed.")
+      } else {
+          console.log("zshell is Installed")
+      }
+  });
 }
 
 
 
-async function Homebrew(){
-  let {stdout} = await sh ('/ usr / bin / ruby ​​-e "$ (curl -sSL https://raw.githubusercontent.com/Homebrew/install/master/install)"');
-  for(let line of stdout.split('\n')) {
-    console.log(`Homebrew: ${line}`);
-  }
+//design tools
+
+function adobe () {
+  console.log("Installing Adobe... ")
+  exec('brew install --cask adobe-creative-cloud',
+  function (error, stderr) {
+      console.log('stderr: ' + stderr);
+      if (error !== null) {
+          console.log('Code error: ' + error);
+         console.log ("Adobe cannot be installed on your computer, because it is already installed.")
+      } else {
+          console.log("Adobe is Installing")
+      }
+  });
 }
 
-async function slack(){
-  let {stdout} = await sh ('brew install --cask slack');
-  for(let line of stdout.split('\n')) {
-    console.log(`brew install --cask slack: ${line}`);
-  }
+function figma () {
+  console.log("Installing Figma...")
+  exec('brew install --cask figma',
+  function (error, stderr) {
+      console.log('stderr: ' + stderr);
+      if (error !== null) {
+          console.log('Code error: ' + error);
+         console.log ("Figma cannot be installed on your computer, because it is already installed.")
+      } else {
+          console.log("Figma is Installed")
+      }
+  });
 }
 
-async function googlechrome(){
-  let {stdout} = await sh ('brew install --cask google-chrome');
-  for(let line of stdout.split('\n')) {
-    console.log(`brew install --cask google-chrome: ${line}`);
-  }
-}
+//para volver a el formulario.
 
-async function firefox (){
-  let {stdout} = await sh ('brew install --cask firefox');
-  for(let line of stdout.split('\n')) {
-    console.log(`brew install --cask firefox: ${line}`);
-  }
-}
-
-async function clickup (){
-  let {stdout} = await sh ('brew install --cask clickup');
-  for(let line of stdout.split('\n')) {
-    console.log(`brew install --cask clickup: ${line}`);
-  }
-}
-
-async function clockify (){
-  let {stdout} = await sh ('brew install --cask clockify');
-  for(let line of stdout.split('\n')) {
-    console.log(`brew install --cask clockify: ${line}`);
-  }
-}
-
-//developer apps 
-
-
-async function github (){
-  let {stdout} = await sh ('brew install --cask github');
-  for(let line of stdout.split('\n')) {
-    console.log(`brew install --cask github: ${line}`);
-  }
-}
-
-async function visualstudio (){
-  let {stdout} = await sh ('brew install --cask visual-studio-code');
-  for(let line of stdout.split('\n')) {
-    console.log(`brew install --cask visual-studio-code: ${line}`);
-  }
-}
-
-async function postman (){
-  let {stdout} = await sh ('brew install --cask postman');
-  for(let line of stdout.split('\n')) {
-    console.log(`brew install --cask postman: ${line}`);
-  }
-}
-
-async function docker (){
-  let {stdout} = await sh ('brew install --cask docker');
-  for(let line of stdout.split('\n')) {
-    console.log(`brew install --cask docker: ${line}`);
-  }
-}
-
-
-//designers apps 
-
-async function adobe (){
-  let {stdout} = await sh ('brew install --cask adobe-creative-cloud');
-  for(let line of stdout.split('\n')) {
-    console.log(`brew install --cask adobe-creative-cloud: ${line}`);
-  }
-}
-
-async function figma (){
-  let {stdout} = await sh ('brew install --cask figma');
-  for(let line of stdout.split('\n')) {
-    console.log(`brew install --cask figma: ${line}`);
-  }
-}
-
-
-//funciones para manejar el tiempo de los callbacks
-
-//xcode y homebrew
-
-function xcode_homebrew() {
-    xcode();
-   setInterval (()=>{
-    Homebrew();
-   }, 9000)
-}
-
-//aplicaciones generales
-
-function generalapps () {
-    googlechrome();
+const goback = async () => {
+  const result = await inquirer
+  .prompt([
+    {
+      type: "input",
+      name: "press9",
+      message: "press 9 for go back ",
+      loop : true,
+      
+    }
+  ])
   
-  setInterval (()=>{
-    firefox();
-  }, 9000 )
+const resultado = result.press9;
 
-  setInterval (()=>{
-    clickup();
-  }, 10000)
-
-  setInterval (()=>{
-    slack();
-  }, 18000)
-
-  setInterval (()=>{
-    clockify();
-  }, 20000)
+  if (resultado == 9){
+      scripts();
+  } else {
+      console.log("type the correct syntax...")
+      goback();
+  }
 }
 
-//aplicaciones de desarrollador
 
-function developerapps (){
-    github ();
+//Formulario
 
-  setInterval (()=>{
-    visualstudio();
-  }, 8000)
 
-  setInterval (()=> {
-    postman();
-  }, 16000)
+function scripts () {
 
-  setInterval (()=> {
-    docker();
-  }, 30000)
+  inquirer
+  .prompt([
+    {
+      type: "rawlist",
+      name: "questionsform",
+      message: "what would you like to do? ",
+      loop : true,
+      choices: [
+        
+        {
+          value: "1",
+          name: `Install X-Code and Homebrew (required for App install)`,
+        },
+        {
+          value: "2",
+          name: `Install General Apps (Google Chrome, Firefox, Clockify, Clickup, Slack) `,
+        },
+        {
+          value: "3",
+          name: `Install General Developer Apps`,
+        },
+        {
+          value: "4",
+          name: `Install Designer Apps`,
+        },
+        {
+          value: "5",
+          name: `Close window`,
+          
+        }
+  
+      ]
+    }
+  ])
+  
+  //condicionales del formulario
+  
+  .then(({questionsform}, ) => {
+  console.log (`Function  ${questionsform} is being executed ...`) 
+    function show () {
+      if (questionsform == 1) {
+        xcode();
+        homebrew();
+        goback();
+        
 
-}
+        setTimeout (()=>{
+          goback();
+        }, 14000)
+  
+    } else if (questionsform == 2){
+  
+      googlechrome();
+      clockify();
+      clickup();
+      firefox();
+      slack();
+      
+      setTimeout (()=>{
+        goback();
+      }, 14000)
 
-//aplicaciones de desarrollador
-
-function designapps () {
-    adobe();
-    setTimeout (()=>{
+    } else if (questionsform == 3) {
+      github();
+      visualcode();
+      docker();
+      postman();
+      zshell();
+      
+      setTimeout (()=>{
+        goback();
+      }, 14000)
+  
+    } else if (questionsform == 4 ) {
+      adobe();
       figma();
-    }, 9000)
-  
+      
+      setTimeout (()=>{
+        goback();
+      }, 12000)
 
-}
+  
+    } else if (questionsform == 5) {
+      console.log("Coming out of the console... ")
+      setTimeout (function (){
+      process.exit();
+    
+      }, 1000)
+      
+  
+    } else {
+      console.log("sintaxis equivocada")
+    }
+    }
+    show ();
+   
+  })
+  
+  //.catch para evitar que el programa se rompa gravemente
+  
+  .catch((error) => {
+   if (error.isTtyError) {
+  
+     console.log(error)
+   } else {
+     /* console */
+    }
+  
+  }); 
+  
+  
+  }
 
 export default scripts;
 
