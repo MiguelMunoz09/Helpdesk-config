@@ -20,12 +20,12 @@ npm install -g Helpdesk-config
 # Usage
 
 ```
- run this commant in your terminal:  Helpdesk-config
+ Helpdesk-config
 ```
 
 # Contributing
 
-If someone wants to add or improve something, I invite you to collaborate directly in this repository: [Build-appi-for-console](https://github.com/MiguelMunoz09/Helpdesk-config)
+If someone wants to add or improve something, I invite you to collaborate directly in this repository: [Helpdesk-config](https://github.com/MiguelMunoz09/Helpdesk-config)
 
 # License
 
