@@ -13,14 +13,25 @@ Within the console, you will be able to see a form that gives you the possibilit
 
 ## Install
 
+To install the package:
+as a mandatory requirement you must have nodejs installed on your work computer (download link: https://nodejs.org/en/download/)
+
+note:
+if when you run the program, you don't have xcode installed
+nor homebrew, then you must execute function number 1, otherwise you will be able to use the program normally.
+
+warning: without xcode and homebrew, the other applications will not be installed. be sure to install it first before running any other console functions.
+
 ```npm
-npm install -g Helpdesk-config
+npm install -g helpdesk-config
 ```
+
+
 
 # Usage
 
 ```
- Helpdesk-config
+ helpdesk-config 
 ```
 
 # Contributing
