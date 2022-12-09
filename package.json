@@ -1,6 +1,6 @@
 {
   "name": "helpdesk-config",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "This is a console application for config work enviroment ",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,6 @@
     "babel-preset-latest": "^6.24.1",
     "colors": "^1.4.0",
     "inquirer": "^8.2.5"
-    
   },
   "homepage": "https://github.com/MiguelMunoz09/Helpdesk-config",
   "bin": {
